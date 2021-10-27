@@ -6,6 +6,11 @@ variable "atlas_project_ID" {
 
 variable "provider_name" {
   type    = string
+  default = "TENANT"
+}
+
+variable "backing_provider_name" {
+  type    = string
   default = "AWS"
 }
 
