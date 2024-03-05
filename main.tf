@@ -20,7 +20,7 @@ resource "mongodbatlas_advanced_cluster" "test" {
       electable_specs {
         instance_size = "M0"
       }
-      provider_name         = "TENANT"
+      provider_name         = var.provider_name
       backing_provider_name = var.backing_provider_name
       region_name           = "US_EAST_1"
       priority              = 7
