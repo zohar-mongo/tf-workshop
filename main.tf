@@ -10,13 +10,22 @@ terraform {
 provider "mongodbatlas" {
 }
 
-resource "mongodbatlas_cluster" "cluster" {
+resource "mongodbatlas_advanced_cluster" "test" {
   project_id   = var.atlas_project_ID
-  provider_name = var.provider_name
-  name = "???"
-  backing_provider_name = var.backing_provider_name
-  provider_region_name = "US_EAST_1"
-  provider_instance_size_name = "M0"
+  name         = "???"
+  cluster_type = "REPLICASET"
+
+  replication_specs {
+    region_configs {
+      electable_specs {
+        instance_size = "M0"
+      }
+      provider_name         = "TENANT"
+      backing_provider_name = var.backing_provider_name
+      region_name           = "US_EAST_1"
+      priority              = 7
+    }
+  }
 }
 
 
